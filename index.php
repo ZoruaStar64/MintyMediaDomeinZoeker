@@ -1,5 +1,9 @@
 <?php
 session_start();
+$selectedDomains = null;
+if (isset($_SESSION['domain_data'])) {
+    $selectedDomains = json_decode($_SESSION['domain_data']);
+}
 ?>
 
 <html lang="en">
@@ -24,6 +28,15 @@ session_start();
             <input type="hidden" name="geselecteerde-domeinen" id="geselecteerde-domeinen" value="hi">
             <input type="submit" name="domein-zoekknop" id="domein-zoekknop" value="Bekijk beschikbaarheid">
         </form>
+    <?php
+    if (isset($_SESSION['domain_data'])) {
+        echo '<div><p>Huidig geselecteerde domeinen:</p>';
+        foreach ($selectedDomains as $domain) {
+            echo '<p>'.$domain->domain.'<p>';
+        }
+        echo '<a href="checkout.php">Bekijk uw huidig geselecteerde domeinen</a></div>';
+    }
+    ?>
     </body>
 <script src="HandleDomains.js" type="application/javascript"></script>
 </html>

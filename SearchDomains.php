@@ -2,6 +2,22 @@
 session_start();
 if ($_POST['domein-zoekknop']) {
     $jsonifiedDomains = $_POST['geselecteerde-domeinen'];
+    if (isset($_SESSION['domain_data'])) {
+        $bestelling = json_decode($_SESSION['domain_data'], true);
+        $deJsonifiedDomains = json_decode($jsonifiedDomains, true);
+
+        foreach ($bestelling as $domain => $value) {
+            foreach ($deJsonifiedDomains as $deJsonifiedDomain => $searchedValue) {
+                $fullDomainName = $searchedValue['name'] . '.' . $searchedValue['extension'];
+                if ($value['domain'] === $fullDomainName) {
+                    unset($deJsonifiedDomains[$deJsonifiedDomain]);
+                }
+            }
+        }
+        //array_merge wordt hier gebruik zodat de decoded array niet al associative teruggegeven wordt.
+        $jsonifiedDomains = json_encode(array_merge($deJsonifiedDomains));
+    }
+
     $auth = require_once 'auth.php';
     $response2 = curl_init();
     curl_setopt($response2, CURLOPT_URL, 'https://dev.api.mintycloud.nl/api/v2.1/domains/search?with_price=true');
