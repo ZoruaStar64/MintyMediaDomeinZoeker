@@ -19,9 +19,14 @@ $total_price = $sub_total + $BTW_price;
         <link href="" rel="stylesheet">
     </head>
     <body>
-    <h1>Domein zoeker Checkout</h1>
-    <h2>Wilt u de onderstaande domeinen bestellen?</h2>
-    <h3>Niet beschikbare domeinen worden niet meeberekend binnen de totale prijs.</h3>
+    <div>
+        <h1>Domein zoeker Checkout</h1>
+        <h2>Wilt u de onderstaande domeinen bestellen?</h2>
+        <h3>Niet beschikbare domeinen worden niet meeberekend binnen de totale prijs.</h3>
+        <p>Om meer domeinen toe te voegen om te bestellen kunt u de knop hieronder indrukken om naar de vorige pagina terug te gaan. (opgezochte domeinen zullen blijven.)</p>
+        <a href="index.php">Terug naar zoekpagina</a>
+    </div>
+
         <div id="domein-container">
         <div class="">
             <p>Domein naam</p><p>Beschikbaarheid</p><p>Prijs</p>
@@ -37,6 +42,10 @@ $total_price = $sub_total + $BTW_price;
                             <p>'. $domain_name .'</p>
                             <p style="color: '. $domain_kleur .'">'. $domain_status .'</span>
                             <p>'. $domain_price . $domain_currency .'</p>
+                            <form name="verwijder-domein" action="RemoveDomain.php" method="post" enctype="application/x-www-form-urlencoded">
+                                <input type="hidden" id="domein-naam" name="domein-naam" value="'. $domain_name .'">
+                                <input type="submit" id="verwijder-domein" name="verwijder-domein" value="Verwijder domein">
+                            </form>
                           </div>';
                 }
             ?>

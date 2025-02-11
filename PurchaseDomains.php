@@ -16,6 +16,16 @@ if ($_POST['domein-bestelknop']) {
     $total_price = 0;
     $sub_total = 0;
     $BTW_price = 0;
+
+    /**
+     * Hier worden domeinen die niet beschikbaar zijn weggehaald.
+     */
+    foreach ($bestelling as $domain => $value) {
+        if ($value['status'] != "free") {
+            unset($bestelling[$domain]);
+        }
+    }
+
     foreach ($bestelling as $domain) {
         if ($domain->status == "free") {
             $domains[] = ["name" => $domain->domain, "price" => $domain->price->product->price, "currency" => $domain->price->product->currency];
@@ -30,5 +40,3 @@ if ($_POST['domein-bestelknop']) {
 
     header("Location: BestellingVoltooid.php");
 }
-
-

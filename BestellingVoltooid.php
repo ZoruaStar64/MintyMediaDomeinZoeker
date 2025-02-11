@@ -17,8 +17,8 @@ $BTW_price = round($sub_total * 0.21, 2);
     <link href="" rel="stylesheet">
 </head>
 <body>
-<h1>Bedankt voor het bestellen van de domeinen!</h1>
-<h2>Hieronder staan de bestelde domeinen:</h2>
+<h1>Bedankt voor het bestellen van het/de domein(en)!</h1>
+<h2>Hieronder staan uw bestelde domeinen:</h2>
 <div id="domein-container">
     <div class="">
         <p>Domein naam</p><p>Prijs</p>

@@ -12,8 +12,16 @@ if ($_POST['domein-zoekknop']) {
 
     $data = curl_exec($response2);
     curl_close($response2);
-    var_dump($data);
+
     if ($data) {
+        if (isset($_SESSION['domain_data'])) {
+            $data = json_encode(
+                array_merge(
+                    json_decode($data, true),
+                    json_decode($_SESSION['domain_data'], true)
+                )
+            );
+        }
         $_SESSION['domain_data'] = $data;
         header('Location: checkout.php');
     } else {
