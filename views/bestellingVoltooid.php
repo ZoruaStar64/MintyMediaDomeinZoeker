@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once('Domein_Manager.php');
+require_once('../Domein_Manager.php');
 
 $bestelling_data = get_bestelling_by_id($_SESSION['bestelling-id']);
 $domain_data = json_decode($bestelling_data['domeinen']);

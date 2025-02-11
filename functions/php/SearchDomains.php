@@ -18,7 +18,7 @@ if ($_POST['domein-zoekknop']) {
         $jsonifiedDomains = json_encode(array_merge($deJsonifiedDomains));
     }
 
-    $auth = require_once 'auth.php';
+    $auth = require_once '../../config/auth.php';
     $response2 = curl_init();
     curl_setopt($response2, CURLOPT_URL, 'https://dev.api.mintycloud.nl/api/v2.1/domains/search?with_price=true');
     curl_setopt($response2, CURLOPT_POST, 1);
@@ -39,9 +39,9 @@ if ($_POST['domein-zoekknop']) {
             );
         }
         $_SESSION['domain_data'] = $data;
-        header('Location: checkout.php');
+        header('Location: ../../views/checkout.php');
     } else {
         $_SESSION['domain_data'] = $jsonifiedDomains;
-        header('Location: index.php');
+        header('Location: ../../index.php');
     }
 }

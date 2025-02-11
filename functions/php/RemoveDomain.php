@@ -11,5 +11,5 @@ if ($_POST['verwijder-domein']) {
     }
     $_SESSION['domain_data'] = json_encode($bestelling);
 
-    header("Location: checkout.php");
+    header("Location: ../../views/checkout.php");
 }

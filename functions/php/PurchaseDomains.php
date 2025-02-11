@@ -1,9 +1,9 @@
 <?php
 session_start();
 if ($_POST['domein-bestelknop']) {
-    require_once 'database.php';
+    require_once '../../config/database.php';
     global $pdo;
-    require_once 'Domein_Manager.php';
+    require_once '../../Domein_Manager.php';
 
     $voornaam = $_POST['voornaam'];
     $tussenvoegsel = null;
@@ -41,5 +41,5 @@ if ($_POST['domein-bestelknop']) {
     create_bestelling($voornaam, $tussenvoegsel, $achternaam, json_encode($domains), $total_price);
     $_SESSION['bestelling-id'] = get_max_id_bestelling();
 
-    header("Location: bestellingVoltooid.php");
+    header("Location: ../../views/bestellingVoltooid.php");
 }
