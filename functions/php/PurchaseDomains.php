@@ -41,5 +41,5 @@ if ($_POST['domein-bestelknop']) {
     create_bestelling($voornaam, $tussenvoegsel, $achternaam, json_encode($domains), $total_price);
     $_SESSION['bestelling-id'] = get_max_id_bestelling();
 
-    header("Location: BestellingVoltooid.php");
+    header("Location: bestellingVoltooid.php");
 }

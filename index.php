@@ -9,7 +9,7 @@ if (isset($_SESSION['domain_data'])) {
 <html lang="en">
     <head>
         <title>Domein Zoeker</title>
-        <link href="common.css" rel="stylesheet">
+        <link href="stylesheets/common.css" rel="stylesheet">
     </head>
     <body>
         <form class="form-layout container-default" name="domein-selector">
@@ -24,7 +24,7 @@ if (isset($_SESSION['domain_data'])) {
             <button class="knop-default" type="button" onclick="Add_Domain()">Voeg domein toe aan selectie</button>
         </form>
         <div class="container-default" id="domein-container"></div>
-        <form name="domein-zoek-formulier" action="SearchDomains.php" method="post" enctype="application/x-www-form-urlencoded">
+        <form name="domein-zoek-formulier" action="functions/php/SearchDomains.php" method="post" enctype="application/x-www-form-urlencoded">
             <input type="hidden" name="geselecteerde-domeinen" id="geselecteerde-domeinen" value="hi">
             <input type="submit" name="domein-zoekknop" id="domein-zoekknop" value="Bekijk beschikbaarheid">
         </form>
@@ -34,9 +34,9 @@ if (isset($_SESSION['domain_data'])) {
         foreach ($selectedDomains as $domain) {
             echo '<p>'.$domain->domain.'<p>';
         }
-        echo '<a class="knop-default" href="checkout.php">Bekijk uw huidig geselecteerde domeinen</a></div>';
+        echo '<a class="knop-default" href="views/checkout.php">Bekijk uw huidig geselecteerde domeinen</a></div>';
     }
     ?>
     </body>
-<script src="HandleDomains.js" type="application/javascript"></script>
+<script src="functions/js/HandleDomains.js" type="application/javascript"></script>
 </html>

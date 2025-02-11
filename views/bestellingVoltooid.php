@@ -14,9 +14,9 @@ $BTW_price = round($sub_total * 0.21, 2);
 <html lang="en">
 <head>
     <title>Domein Zoeker - Bestelling voltooid</title>
-    <link href="common.css" rel="stylesheet">
-    <link href="checkout.css" rel="stylesheet">
-    <link href="bestellingVoltooid.css" rel="stylesheet">
+    <link href="../stylesheets/common.css" rel="stylesheet">
+    <link href="../stylesheets/checkout.css" rel="stylesheet">
+    <link href="../stylesheets/bestellingVoltooid.css" rel="stylesheet">
 </head>
 <body>
 <div class="container-default">
