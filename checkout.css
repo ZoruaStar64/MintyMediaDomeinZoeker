@@ -1,0 +1,10 @@
+.selected-domains {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.knop-default {
+    margin-top: 0;
+    margin-bottom: 10px;
+}

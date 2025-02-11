@@ -14,7 +14,7 @@ if ($_POST['domein-zoekknop']) {
                 }
             }
         }
-        //array_merge wordt hier gebruik zodat de decoded array niet al associative teruggegeven wordt.
+        //array_merge wordt hier gebruik zodat de decoded array niet als associative teruggegeven wordt.
         $jsonifiedDomains = json_encode(array_merge($deJsonifiedDomains));
     }
 

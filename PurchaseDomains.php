@@ -11,7 +11,7 @@ if ($_POST['domein-bestelknop']) {
         $tussenvoegsel = $_POST['tussenvoegsel'] == null ? '' : $_POST['tussenvoegsel'];
     }
     $achternaam = $_POST['achternaam'];
-    $bestelling = json_decode($_POST['bestelde-domeinen']);
+    $decodedBestelling = json_decode($_POST['bestelde-domeinen'], true);
     $domains = [];
     $total_price = 0;
     $sub_total = 0;
@@ -20,11 +20,14 @@ if ($_POST['domein-bestelknop']) {
     /**
      * Hier worden domeinen die niet beschikbaar zijn weggehaald.
      */
-    foreach ($bestelling as $domain => $value) {
+    foreach ($decodedBestelling as $domain => $value) {
         if ($value['status'] != "free") {
-            unset($bestelling[$domain]);
+            unset($decodedBestelling[$domain]);
         }
     }
+
+    $encodedBestelling = json_encode(array_merge($decodedBestelling));
+    $bestelling = json_decode($encodedBestelling);
 
     foreach ($bestelling as $domain) {
         if ($domain->status == "free") {
